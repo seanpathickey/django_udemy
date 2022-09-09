@@ -20,18 +20,13 @@ monthly_challenges = {
 
 # Create your views here.
 
+# index() creates the front page view where we can select a month
 def index(request):
-    list_items = ''
     months = list(monthly_challenges.keys())
     
-    for month in months:
-        capitalized_month = month.capitalize()
-        month_path = reverse('month-challenge', args=[month])
-        list_items += f'<li><a href="{month_path}">{capitalized_month}</a></li>'
-    
-    response_text = f'<ul>{list_items}</ul>'
-    
-    return HttpResponse(response_text)
+    return render(request, 'challenges/index.html', {
+        'months': months
+    })
 
 def monthly_challenge_by_number(request, month):
     months_list = list(monthly_challenges.keys())
