@@ -8,6 +8,10 @@
 </head>
 <body>
     <h1>{{ month|title }} Challenge</h1> <! month and text are taken from views.py>
-    <h2>{{ text }}</h2>
+    {% if text is not None %}
+        <h2>{{ text }}</h2>
+    {% else %}
+        <h2>{{ "This month hasn't been added yet" }}</h2>
+    {% endif %}
 </body>
 </html>
