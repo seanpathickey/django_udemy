@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ month|title }} Challenge</title> <! month | title applies title casing to the month passed>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block page_title%}
+    {{ month|title }} Challenge <! month | title applies title casing to the month passed>
+{% endblock %}
+
+{% block content %}
+    {% include "challenges/includes/header.html" %} <! include tag takes html snippets from another file (header.html) > 
+
     <h1>{{ month|title }} Challenge</h1> <! month and text are taken from views.py>
     {% if text is not None %}
         <h2>{{ text }}</h2>
     {% else %}
         <h2>{{ "This month hasn't been added yet" }}</h2>
     {% endif %}
-</body>
-</html>
+{% endblock %}
